@@ -21,11 +21,28 @@ class Committee(models.Model):
         return self.name
 
 
+
 class AccessToken(models.Model):
     value = models.TextField()
 
+    def __str__(self):
+        return 'Access Token ' + str(self.id)
+
+    class Meta:
+        verbose_name = 'Access Token'
+        verbose_name_plural = 'Access Token'
+
 
 class APIRequest(models.Model):
-    current_page = models.IntegerField()
-    total_pages = models.IntegerField()
+    name = models.CharField(max_length=256)
+    current_page = models.IntegerField(default=1)
+    total_pages = models.IntegerField(default=1)
+
+    def __str__(self):
+        return self.name + 'Request'
+
+
+    class Meta:
+        verbose_name = 'API Request'
+        verbose_name_plural = 'API Requests'
 

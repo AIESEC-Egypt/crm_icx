@@ -4,8 +4,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django_cron import CronJobBase, Schedule
 
 from django.conf import settings
-from .models import AccessToken
+from .models import *
 from . import create_token
+from . import constants
 from crm_icx.people.models import ExchangeParticipant
 
 
@@ -36,16 +37,31 @@ class UpdateApplications(CronJobBase):
     code = 'core.UpdateApplications'
 
     def do(self):
-        pages = request_data(1, True)
-        print(pages)
-        for i in range(1, pages):
-            data = request_data(i)
-            map_data(data)
-            print('Page ' + str(i))
+        request = self.create_request()
+        print(request.current_page)
+        print(request.total_pages)
+        for i in range(request.current_page, request.total_pages + 1):
+            response = request_data(i)
+            map_data(response, request)
+            print('Page ' + str(i) + ', Request Current Page is: ' + str(request.current_page))
+            if (request.current_page == request.total_pages):
+                self.reset_request()
+
+    def reset_request(self):
+        applications_request = APIRequest.objects.get(id=constants.APPLICATION_REQUEST_ID)
+        applications_request.current_page = 1
+        applications_request.save()
+    def create_request(self):
+        applications_request, created = APIRequest.objects.get_or_create(id=constants.APPLICATION_REQUEST_ID)
+        if created:
+            applications_request.name = constants.APPLICATION_REQUEST
+        applications_request.total_pages = request_data(1, True)
+        applications_request.save()
+        return applications_request
 
 
-def map_data(r):
-    applications = r['data']
+def map_data(response, request):
+    applications = response['data']
     for application in applications:
         application_id = application['id']
         try:
@@ -53,6 +69,8 @@ def map_data(r):
             update_application(new_application, application)
         except ObjectDoesNotExist:
             create_application(application)
+    request.current_page = request.current_page + 1
+    request.save()
 
 
 def create_application(application_data):
