@@ -39,7 +39,7 @@ class APIRequest(models.Model):
     total_pages = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.name + 'Request'
+        return self.name
 
 
     class Meta:
