@@ -8,6 +8,7 @@ from .models import *
 from . import create_token
 from . import constants
 from crm_icx.people.models import ExchangeParticipant
+from crm_icx.opportunities.models import *
 
 
 class UpdateAccessToken(CronJobBase):
@@ -75,14 +76,25 @@ def map_applications(response, request):
 
 
 def create_application(application_data):
+    ## Exchange Participant Data
     ep_data = application_data['person']
     ep_id = ep_data['id']
     try:
         exchange_participant = ExchangeParticipant.objects.get(pk=ep_id)
     except ObjectDoesNotExist:
         exchange_participant = create_ep(ep_data)
+
+    ## Opportunity Data
+    op_data = application_data['opportunity']
+    op_id = op_data['id']
+    try:
+        opportunity = Opportunity.objects.get(pk=op_id)
+    except ObjectDoesNotExist:
+        opportunity = create_op(op_data)
+
     new_application = Application(id=application_data['id'])
     new_application.exchange_participant = exchange_participant
+    new_application.opportunity = opportunity
     new_application.date_approved = application_data['date_approved']
     new_application.date_realized = application_data['date_realized']
     new_application.status = application_data['status']
@@ -110,8 +122,6 @@ def create_ep(exchange_participant_data):
     home_lc_id = exchange_participant_data['home_lc']['id']
     check_home_lc(home_lc_id)
     home_lc = Committee.objects.get(pk=home_lc_id)
-    if (home_lc == None):
-        print("a7a")
     exchange_participant.committee = home_lc
     exchange_participant.save()
     return exchange_participant
@@ -120,6 +130,24 @@ def create_ep(exchange_participant_data):
     # To do committee
     # exchange_participant.ep_managers =
     # exchange_participant.phone_number =
+
+
+def create_op(opportunity_data):
+    opportunity = Opportunity(id=opportunity_data['id'])
+    opportunity.title = opportunity_data['title']
+    opportunity.status = opportunity_data['status']
+    opportunity.program_type = ProgramType.objects.get(pk=opportunity_data['programmes']['id'])
+    opportunity.earliest_start_date = opportunity_data['earliest_start_date']
+    opportunity.latest_end_date = opportunity_data['latest_end_date']
+    # opportunity.created_at = opportunity_data['created_at']
+    # opportunity.updated_at = opportunity_data['updated_at']
+    opportunity.committee = Committee.objects.get(pk=opportunity_data['office']['id'])
+    opportunity.save()
+
+    #    To Be Done
+    #    op_managers = models.ManyToManyField('people.Manager')
+
+    return opportunity
 
 
 def check_home_lc(lc_id):

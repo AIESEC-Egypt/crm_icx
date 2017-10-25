@@ -100,7 +100,6 @@ class GIS:
             token = None
             for cookie in self.cj:
                 if cookie.name == 'aiesec_token':
-
                     token = json.loads(urllib.parse.unquote(cookie.value).decode('utf8'))['token']['access_token']
             if token is None:
                 raise Exception('Unable to generate a token for {0}!'.format(email))
