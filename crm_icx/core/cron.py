@@ -6,7 +6,6 @@ from django_cron import CronJobBase, Schedule
 from django.conf import settings
 from .models import *
 from . import create_token
-from . import constants
 from crm_icx.people.models import ExchangeParticipant
 from crm_icx.opportunities.models import *
 
@@ -38,28 +37,26 @@ class UpdateApplications(CronJobBase):
     code = 'core.UpdateApplications'
 
     def do(self):
-        request = self.create_request()
-        print(request.current_page)
-        print(request.total_pages)
-        for i in range(request.current_page, request.total_pages + 1):
-            response = request_data(i)
-            map_applications(response, request)
-            print('Page ' + str(i) + ', Request Current Page is: ' + str(request.current_page))
-            if (i >= request.total_pages):
-                self.reset_request()
+        requests = self.create_requests()
+        for request in requests:
+            if (request.current_page < request.total_pages + 1):
+                for i in range(request.current_page, request.total_pages + 1):
+                    response = request_data(i, request=request)
+                    map_applications(response, request)
+                    print('Page ' + str(i) + ', Request Current Page is: ' + str(request.current_page))
+        self.reset_requests(requests)
 
-    def reset_request(self):
-        applications_request = APIRequest.objects.get(id=constants.APPLICATION_REQUEST_ID)
-        applications_request.current_page = 1
-        applications_request.save()
+    def reset_requests(self, requests):
+        for applications_request in requests:
+            applications_request.current_page = 1
+            applications_request.save()
 
-    def create_request(self):
-        applications_request, created = APIRequest.objects.get_or_create(id=constants.APPLICATION_REQUEST_ID)
-        if created:
-            applications_request.name = constants.APPLICATION_REQUEST
-        applications_request.total_pages = request_data(1, True)
-        applications_request.save()
-        return applications_request
+    def create_requests(self):
+        applications_requests = APIRequest.objects.filter(type=1)
+        for applications_request in applications_requests:
+            applications_request.total_pages = request_data(1, True, applications_request)
+            applications_request.save()
+        return applications_requests
 
 
 def map_applications(response, request):
@@ -158,7 +155,7 @@ def check_home_lc(lc_id):
         request_committees()
 
 
-def request_data(page, no_of_pages=False):
+def request_data(page, no_of_pages=False, request=None):
     ## Get Access Token
     access_token, created = AccessToken.objects.get_or_create(id=1)
     if created:
@@ -167,7 +164,8 @@ def request_data(page, no_of_pages=False):
     ## Needed Filters
     filter_data = '&only=data'
     filter_page = '&page=' + str(page)
-    filter_created_at_from = '&filters%5Bcreated_at%5D%5Bfrom%5D=' + '2017-09-01'
+    filter_created_at_from = '&filters%5Bcreated_at%5D%5Bfrom%5D=' + str(request.start_date)
+    filter_created_at_to = '&filters%5Bcreated_at%5D%5Bto%5D=' + str(request.end_date)
     filter_for_opportunities = '&filters%5Bfor%5D=opportunities'
 
     ## URL Request
@@ -176,6 +174,7 @@ def request_data(page, no_of_pages=False):
           filter_data + \
           filter_page + \
           filter_created_at_from + \
+          filter_created_at_to + \
           filter_for_opportunities
     r = requests.get(url).json()
 

@@ -1,4 +1,5 @@
 from django.db import models
+from . import constants
 
 
 # Create your models here.
@@ -21,7 +22,6 @@ class Committee(models.Model):
         return self.name
 
 
-
 class AccessToken(models.Model):
     value = models.TextField()
 
@@ -35,14 +35,15 @@ class AccessToken(models.Model):
 
 class APIRequest(models.Model):
     name = models.CharField(max_length=256)
+    type = models.IntegerField(choices=constants.API_REQUESTS_CHOICES, default=9)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
     current_page = models.IntegerField(default=1)
     total_pages = models.IntegerField(default=1)
 
     def __str__(self):
         return self.name
 
-
     class Meta:
         verbose_name = 'API Request'
         verbose_name_plural = 'API Requests'
-

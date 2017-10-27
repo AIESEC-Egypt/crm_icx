@@ -4,6 +4,12 @@ APPLICATION_REQUEST_ID = 1
 OPPORTUNITIES_REQUEST = "Opportunities Request"
 OPPORTUNITIES_REQUEST_ID = 2
 
+API_REQUESTS_CHOICES = (
+    (1, 'Applications'),
+    (2, 'Opportunities'),
+    (9, 'None')
+)
+
 OPPORTUNITIES_STATUSES = (
     (1, 'DRAFT'),
     (2, 'OPEN'),
