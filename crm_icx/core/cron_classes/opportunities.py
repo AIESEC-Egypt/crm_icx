@@ -17,7 +17,7 @@ class UpdateOpportunities(CronJobBase):
     def do(self):
         opportunities = Opportunity.objects.all().order_by('id')
         for opportunity in opportunities:
-            if opportunity.updated is True:
+            if not opportunity.updated:
                 print(opportunity.id)
                 response = request_data(opportunity.id)
                 update_opportunity(opportunity, response)
@@ -65,7 +65,7 @@ def fetch_manager(opportunity_manager_data):
     return opportunity_manager
 
 
-def request_data(opportunity_id):
+def request_data(opportunity_id, fail=0):
     # Get Access Token
     access_token, created = AccessToken.objects.get_or_create(id=1)
     if created:
@@ -74,4 +74,12 @@ def request_data(opportunity_id):
     # URL Request
     url = 'https://gis-api.aiesec.org//v2/opportunities/' + str(opportunity_id) + \
           '?access_token=' + access_token.value
-    return requests.get(url).json()
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    elif fail < 4:
+        fail += 1
+        print('fail')
+        return request_data(opportunity_id, fail)
+    else:
+        return

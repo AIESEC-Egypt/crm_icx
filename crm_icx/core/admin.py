@@ -5,9 +5,6 @@ from .models import *
 # Register your models here.
 
 
-
-
-
 class AccessTokenAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'value')
 
@@ -31,6 +28,7 @@ class CommitteeAdmin(admin.ModelAdmin):
             return obj.parent_committee.name
         else:
             return 'No Parent'
+
     get_mc.short_description = 'MC'  # Renames column head
 
 

@@ -9,6 +9,13 @@ class Manager(models.Model):
     phone = models.CharField(max_length=256, null=True, blank=True)
     country_code = models.CharField(max_length=256, null=True, blank=True)
 
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name = 'Manager'
+        verbose_name_plural = 'Managers'
+
 
 class ExchangeParticipant(models.Model):
     committee = models.ForeignKey("core.Committee", blank=True, null=True, on_delete=models.CASCADE)
@@ -22,3 +29,7 @@ class ExchangeParticipant(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+    class Meta:
+        verbose_name = 'Exchange Participant'
+        verbose_name_plural = 'Exchange Participants'
