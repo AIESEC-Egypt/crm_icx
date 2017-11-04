@@ -11,6 +11,7 @@ from crm_icx.opportunities.models import *
 class UpdateOpportunities(CronJobBase):
     RUN_EVERY_MINS = 60 if settings.DEBUG else 10  # 6 hours when not DEBUG
 
+    ALLOW_PARALLEL_RUNS = True
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'core.UpdateOpportunities'
 
@@ -37,8 +38,6 @@ def update_opportunity(opportunity, opportunity_data):
     opportunity.updated = True
     opportunity.save()
 
-    return opportunity
-
 
 def create_opportunity_manager(opportunity_manager_data):
     opportunity_manager = Manager(id=opportunity_manager_data['id'])
@@ -58,7 +57,7 @@ def create_opportunity_manager(opportunity_manager_data):
 def fetch_manager(opportunity_manager_data):
     op_man_id = opportunity_manager_data['id']
     try:
-        opportunity_manager = Opportunity.objects.get(pk=op_man_id)
+        opportunity_manager = Manager.objects.get(pk=op_man_id)
     except ObjectDoesNotExist:
         opportunity_manager = create_opportunity_manager(opportunity_manager_data)
 

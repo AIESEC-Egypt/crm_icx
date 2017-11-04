@@ -7,7 +7,7 @@ from django.conf import settings
 
 from crm_icx.core.cron_classes.main import check_home_lc
 from crm_icx.core.models import *
-from crm_icx.people.models import ExchangeParticipant
+from crm_icx.people.models import ExchangeParticipant, Manager
 from crm_icx.opportunities.models import *
 
 
@@ -16,7 +16,7 @@ class UpdateApplications(CronJobBase):
 
     # Additional Settings
     # RUN_AT_TIMES = ['11:30', '14:00', '23:15']
-    # ALLOW_PARALLEL_RUNS = True
+    ALLOW_PARALLEL_RUNS = True
 
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'core.UpdateApplications'
@@ -78,6 +78,7 @@ def create_application(application_data):
     new_application = Application(id=application_data['id'])
     new_application.exchange_participant = exchange_participant
     new_application.opportunity = opportunity
+    new_application.date_an_signed = application_data['an_signed_at']
     new_application.date_approved = application_data['date_approved']
     new_application.date_realized = application_data['date_realized']
     new_application.status = application_data['status']
@@ -114,6 +115,7 @@ def create_ep(exchange_participant_data):
 
     return exchange_participant
 
+
 def create_op(opportunity_data):
     opportunity = Opportunity(id=opportunity_data['id'])
     opportunity.title = opportunity_data['title']
@@ -125,6 +127,7 @@ def create_op(opportunity_data):
     opportunity.save()
 
     return opportunity
+
 
 def request_data(page, no_of_pages=False, request=None):
     # Get Access Token
@@ -155,3 +158,81 @@ def request_data(page, no_of_pages=False, request=None):
         return pages
     else:
         return r
+
+
+class UpdateSpecificApplication(CronJobBase):
+    RUN_EVERY_MINS = 60 if settings.DEBUG else 10  # 6 hours when not DEBUG
+
+    ALLOW_PARALLEL_RUNS = True
+
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+    code = 'core.UpdateSpecificApplication'
+
+    def do(self):
+        applications = Application.objects.all().distinct('exchange_participant')
+        for application in applications:
+            if not application.updated:
+                print(application.id)
+                response = request_specific_data(application.id)
+                update_specific_application(application, response)
+
+
+def update_specific_application(application, application_data):
+    exchange_participant = application.exchange_participant
+    exchange_participant_data = application_data['person']
+
+    ep_managers_json = exchange_participant_data['managers']
+
+    if ep_managers_json is not None:
+        for ep_manager_data in ep_managers_json:
+            ep_manager = fetch_manager(ep_manager_data)
+            exchange_participant.ep_managers.add(ep_manager)
+
+    application.updated = True
+    exchange_participant.save()
+    application.save()
+
+
+def create_ep_manager(ep_manager_data):
+    ep_manager = Manager(id=ep_manager_data['id'])
+    ep_manager.full_name = ep_manager_data['full_name']
+    ep_manager.email = ep_manager_data['email']
+    if ep_manager_data['contact_info'] is not None:
+        try:
+            ep_manager.phone = ep_manager_data['contact_info']['phone']
+            ep_manager.country_code = ep_manager_data['contact_info']['country_code']
+        finally:
+            pass
+
+    ep_manager.save()
+    return ep_manager
+
+
+def fetch_manager(ep_manager_data):
+    ep_man_id = ep_manager_data['id']
+    try:
+        ep_manager = Manager.objects.get(pk=ep_man_id)
+    except ObjectDoesNotExist:
+        ep_manager = create_ep_manager(ep_manager_data)
+
+    return ep_manager
+
+
+def request_specific_data(application_id, fail=0):
+    # Get Access Token
+    access_token, created = AccessToken.objects.get_or_create(id=1)
+    if created:
+        access_token.save()
+
+    # URL Request
+    url = 'https://gis-api.aiesec.org//v2/applications/' + str(application_id) + \
+          '?access_token=' + access_token.value
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    elif fail < 4:
+        fail += 1
+        print('fail')
+        return request_specific_data(application_id, fail)
+    else:
+        return
