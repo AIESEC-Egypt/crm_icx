@@ -359,5 +359,4 @@ pip-selfcheck.json
 
 crm_icx/media/
 venv
-
-
+.idea/

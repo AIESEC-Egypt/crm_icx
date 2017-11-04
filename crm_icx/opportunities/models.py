@@ -22,6 +22,7 @@ class Opportunity(models.Model):
     earliest_start_date = models.DateTimeField()
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
+    updated = models.BooleanField(default=False)
 
     # Foreign Keys
     committee = models.ForeignKey('core.Committee', on_delete=models.CASCADE)

@@ -280,8 +280,9 @@ ADMIN_URL = r'^admin/'
 # ------------------------------------------------------------------------------
 
 CRON_CLASSES = [
-    "crm_icx.core.cron.UpdateAccessToken",
-    "crm_icx.core.cron.UpdateApplications",
+    "crm_icx.core.cron_classes.main.UpdateAccessToken",
+    # "crm_icx.core.cron_classes.applications.UpdateApplications",
+    "crm_icx.core.cron_classes.opportunities.UpdateOpportunities",
     "django_cron.cron.FailedRunsNotificationCronJob",
 ]
 

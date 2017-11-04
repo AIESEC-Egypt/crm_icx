@@ -11,7 +11,7 @@ class Manager(models.Model):
 
 
 class ExchangeParticipant(models.Model):
-    committee = models.ForeignKey("core.Committee", on_delete=models.CASCADE)
+    committee = models.ForeignKey("core.Committee", blank=True, null=True, on_delete=models.CASCADE)
     birth_date = models.CharField(max_length=256)
     profile_photo_url = models.URLField()
     first_name = models.CharField(max_length=256)
