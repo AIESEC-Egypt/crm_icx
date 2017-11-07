@@ -28,7 +28,6 @@ class ExchangeParticipant(models.Model):
     updated = models.BooleanField(default=False)
     ep_managers = models.ManyToManyField(Manager)
 
-
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 

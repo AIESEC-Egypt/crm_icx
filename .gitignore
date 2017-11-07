@@ -5,17 +5,15 @@ __pycache__/
 *$py.class
 
 # C extensions
-*.so
 
 # Distribution / packaging
-.Python
+
 build/
 develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -45,10 +43,6 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
-
-# Translations
-*.mo
-*.pot
 
 # Django stuff:
 staticfiles/
@@ -190,15 +184,12 @@ typings/
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-.idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
 
 # Sensitive or high-churn files:
-.idea/**/dataSources/
+
 .idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
@@ -342,21 +333,6 @@ Session.vim
 tags
 
 
-### VirtualEnv template
-# Virtualenv
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-pip-selfcheck.json
-
-
-
 
 crm_icx/media/
-venv
-.idea
+.idea/

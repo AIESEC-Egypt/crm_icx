@@ -41,7 +41,7 @@ class ApplicationAdmin(admin.ModelAdmin):
         return obj.exchange_participant.committee
 
     def get_mc(self, obj):
-        if (obj.exchange_participant.committee.parent_committee != None):
+        if obj.exchange_participant.committee.parent_committee is not None:
             return obj.exchange_participant.committee.parent_committee.name
         else:
             return 'No Parent'
@@ -50,8 +50,6 @@ class ApplicationAdmin(admin.ModelAdmin):
     get_ep_email.short_description = 'Email'  # Renames column head
     get_lc.short_description = 'Home LC'  # Renames column head
     get_mc.short_description = 'Home MC'  # Renames column head
-
-
 
 
 admin.site.register(Application, ApplicationAdmin)
