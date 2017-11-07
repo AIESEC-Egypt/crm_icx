@@ -11,6 +11,5 @@ class Application(models.Model):
     experience_start_date = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
-    updated = models.BooleanField(default=False)
     exchange_participant = models.ForeignKey('people.ExchangeParticipant', on_delete=models.CASCADE)
     opportunity = models.ForeignKey('opportunities.Opportunity', on_delete=models.CASCADE)

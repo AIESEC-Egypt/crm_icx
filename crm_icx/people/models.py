@@ -25,7 +25,9 @@ class ExchangeParticipant(models.Model):
     last_name = models.CharField(max_length=256)
     email = models.CharField(max_length=256)
     phone_number = models.CharField(max_length=256, blank=True, null=True)
+    updated = models.BooleanField(default=False)
     ep_managers = models.ManyToManyField(Manager)
+
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name

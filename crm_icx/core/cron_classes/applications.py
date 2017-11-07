@@ -171,7 +171,7 @@ class UpdateSpecificApplication(CronJobBase):
     def do(self):
         applications = Application.objects.all().distinct('exchange_participant')
         for application in applications:
-            if not application.updated:
+            if not application.exchange_participant.updated:
                 print(application.id)
                 response = request_specific_data(application.id)
                 update_specific_application(application, response)
@@ -188,7 +188,7 @@ def update_specific_application(application, application_data):
             ep_manager = fetch_manager(ep_manager_data)
             exchange_participant.ep_managers.add(ep_manager)
 
-    application.updated = True
+    exchange_participant.updated = True
     exchange_participant.save()
     application.save()
 
