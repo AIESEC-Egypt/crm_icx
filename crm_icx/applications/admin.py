@@ -16,19 +16,23 @@ class ApplicationAdmin(admin.ModelAdmin):
         'get_mc',
         'get_ep_email',
         'status',
-        'date_approved',
-        'date_realized',
-        'created_at',
-        'updated_at',
-        'experience_start_date',
+        'get_timeline_id'
+        # 'date_approved',
+        # 'date_realized',
+        # 'created_at',
+        # 'updated_at',
+        # 'experience_start_date',
     )
     list_filter = (
         'status',
-        ('created_at', DateFieldListFilter),
+        # ('created_at', DateFieldListFilter),
     )
     search_fields = (
         'status',
     )
+
+    def get_timeline_id(self,obj):
+        return obj.timeline.id
 
     # readonly_fields = ('created_at',)
     def get_ep_id(self, obj):

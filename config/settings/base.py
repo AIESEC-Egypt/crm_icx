@@ -282,7 +282,7 @@ ADMIN_URL = r'^admin/'
 
 CRON_CLASSES = [
     "crm_icx.core.cron_classes.main.UpdateAccessToken",
-    "crm_icx.core.cron_classes.applications.UpdateApplications",
+    # "crm_icx.core.cron_classes.applications.UpdateApplications",
     "crm_icx.core.cron_classes.applications.UpdateSpecificApplication",
     "crm_icx.core.cron_classes.opportunities.UpdateOpportunities",
 

@@ -1,5 +1,5 @@
 import requests
-from crm_icx.applications.models import Application
+from crm_icx.applications.models import *
 from django.core.exceptions import ObjectDoesNotExist
 from django_cron import CronJobBase, Schedule
 
@@ -59,6 +59,9 @@ def map_applications(response, request):
 
 
 def create_application(application_data):
+    # Initialise Application
+    new_application = Application(id=application_data['id'])
+
     # Exchange Participant Data
     ep_data = application_data['person']
     ep_id = ep_data['id']
@@ -66,6 +69,7 @@ def create_application(application_data):
         exchange_participant = ExchangeParticipant.objects.get(pk=ep_id)
     except ObjectDoesNotExist:
         exchange_participant = create_ep(ep_data)
+    new_application.exchange_participant = exchange_participant
 
     # Opportunity Data
     op_data = application_data['opportunity']
@@ -74,25 +78,31 @@ def create_application(application_data):
         opportunity = Opportunity.objects.get(pk=op_id)
     except ObjectDoesNotExist:
         opportunity = create_op(op_data)
-
-    new_application = Application(id=application_data['id'])
-    new_application.exchange_participant = exchange_participant
     new_application.opportunity = opportunity
-    new_application.date_an_signed = application_data['an_signed_at']
-    new_application.date_approved = application_data['date_approved']
-    new_application.date_realized = application_data['date_realized']
+
+    # Initialise Timeline for the Application
+    timeline = Timeline()
+    timeline.date_an_signed = application_data['an_signed_at']
+    timeline.date_approved = application_data['date_approved']
+    timeline.date_realized = application_data['date_realized']
+    timeline.experience_start_date = application_data['experience_start_date']
+    timeline.created_at = application_data['created_at']
+    timeline.updated_at = application_data['updated_at']
+    timeline.save()
+    new_application.timeline = timeline
+
     new_application.status = application_data['status']
-    new_application.experience_start_date = application_data['experience_start_date']
-    new_application.created_at = application_data['created_at']
-    new_application.updated_at = application_data['updated_at']
     new_application.save()
 
 
 def update_application(new_application, application_data):
-    new_application.date_approved = application_data['date_approved']
-    new_application.date_realized = application_data['date_realized']
+    new_application.timeline.date_approved = application_data['date_approved']
+    new_application.timeline.date_realized = application_data['date_realized']
+    new_application.timeline.experience_start_date = application_data['experience_start_date']
+    new_application.timeline.date_an_signed = application_data['an_signed_at']
+    new_application.timeline.updated_at = application_data['updated_at']
+    new_application.timeline.save()
     new_application.status = application_data['status']
-    new_application.updated_at = application_data['updated_at']
     new_application.save()
 
 
