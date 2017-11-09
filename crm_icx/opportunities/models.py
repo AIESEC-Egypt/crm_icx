@@ -27,7 +27,7 @@ class Opportunity(models.Model):
     # Foreign Keys
     committee = models.ForeignKey('core.Committee', on_delete=models.CASCADE)
     program_type = models.ForeignKey('ProgramType', on_delete=models.CASCADE)
-    op_managers = models.ManyToManyField('people.Manager', blank=True)
+    op_managers = models.ManyToManyField('people.Manager')
 
     def __str__(self):
         return self.title

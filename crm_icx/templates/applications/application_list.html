@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}Applications{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Users</h2>
+
+        <div class="list-group">
+            {% for application in applications %}
+                <a href="{% url 'users:detail' application.id %}" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{ application.exchange_participant.first_name }}</h4>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+    <span class="step-links">
+        {% if applications.has_previous %}
+            <a href="?page={{ applications.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ applications.number }} of {{ applications.paginator.num_pages }}.
+        </span>
+
+        {% if applications.has_next %}
+            <a href="?page={{ applications.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+        </div>
+    </div>
+    <form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit"/>
+    </form>
+{% endblock content %}
+
+{#{% block content %}#}
+{#<form action="" method="get">#}
+{#    {{ filter.form.as_p }}#}
+{#    <input type="submit"/>#}
+{#</form>#}
+{#{% for obj in filter.qs %}#}
+{#    {{ obj.name }} - ${{ obj.price }}<br/>#}
+{#{% endfor %}#}
+{#{% endblock %}#}

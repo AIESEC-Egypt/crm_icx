@@ -4,9 +4,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from crm_icx.core.views import home
 
 urlpatterns = [
-                  url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
+                  url(r'^$', home, name='home'),
                   url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
                   # Django Admin, use {% url 'admin:index' %}
@@ -20,6 +21,7 @@ urlpatterns = [
                   url(r'^applications/', include('crm_icx.applications.urls', namespace='applications')),
                   url(r'^opportunities/', include('crm_icx.opportunities.urls', namespace='opportunities')),
                   url(r'^people/', include('crm_icx.people.urls', namespace='people')),
+                  url(r'^community/', include('qa.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

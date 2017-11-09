@@ -50,6 +50,10 @@ THIRD_PARTY_APPS = [
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     'django_cron',  # cron_jobs
+    'qa',
+    'taggit',
+    'hitcount',
+    'django_markdown',
 ]
 
 # Apps specific for this project go here.
@@ -282,7 +286,7 @@ ADMIN_URL = r'^admin/'
 
 CRON_CLASSES = [
     "crm_icx.core.cron_classes.main.UpdateAccessToken",
-    # "crm_icx.core.cron_classes.applications.UpdateApplications",
+    "crm_icx.core.cron_classes.applications.UpdateApplications",
     "crm_icx.core.cron_classes.applications.UpdateSpecificApplication",
     "crm_icx.core.cron_classes.opportunities.UpdateOpportunities",
 
@@ -290,3 +294,19 @@ CRON_CLASSES = [
 ]
 
 FAILED_RUNS_CRONJOB_EMAIL_PREFIX = "[ICX Server Check]: "
+
+QA_SETTINGS = {
+    'qa_messages': True,
+    'qa_description_optional': False,
+    'reputation': {
+        'CREATE_QUESTION': 0,
+        'CREATE_ANSWER': 0,
+        'CREATE_ANSWER_COMMENT': 0,
+        'CREATE_QUESTION_COMMENT': 0,
+        'ACCEPT_ANSWER': 0,
+        'UPVOTE_QUESTION': 0,
+        'UPVOTE_ANSWER': 0,
+        'DOWNVOTE_QUESTION': 0,
+        'DOWNVOTE_ANSWER': 0,
+    }
+}

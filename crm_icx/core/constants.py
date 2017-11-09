@@ -23,13 +23,14 @@ OPPORTUNITIES_STATUSES = (
 )
 
 APPLICATIONS_STATUSES = (
-    (1, 'OPEN'),
-    (2, 'ACCEPTED'),
-    (3, 'IN PROGRESS'),
-    (4, 'APPROVED'),
-    (5, 'REALIZED'),
-    (6, 'COMPLETED'),
-    (7, 'WITHDRAWN'),
-    (8, 'REJECTED'),
-    (9, 'DECLINED')
+    (None, 'all'),
+    ('open', 'open'),
+    ('accepted', 'accepted'),
+    ('matched', 'matched'),
+    ('approved', 'approved'),
+    ('realized', 'realized'),
+    ('completed', 'completed'),
+    ('withdrawn', 'withdrawn'),
+    ('rejected', 'rejected'),
+    ('declined', 'declined')
 )
