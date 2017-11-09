@@ -4,10 +4,49 @@ from django.db import models
 # Create your models here.
 
 class Timeline(models.Model):
+    # Acceptance Note Signed
+    state_an_signed = models.BooleanField(default=False)
     date_an_signed = models.DateTimeField(blank=True, null=True)
+
+    # Withdrawn
+    state_withdrawn = models.BooleanField(default=False)
+    date_withdrawn = models.DateTimeField(blank=True, null=True)
+
+    # Rejected
+    state_rejected = models.BooleanField(default=False)
+    date_rejected = models.DateTimeField(blank=True, null=True)
+
+    # Matched
+    state_matched = models.BooleanField(default=False)
+    date_matched = models.DateTimeField(blank=True, null=True)
+
+    # Accepted
+    state_accepted = models.BooleanField(default=False)
+    date_accepted = models.DateTimeField(blank=True, null=True)
+
+    # TN Approved
+    state_tn_approved = models.BooleanField(default=False)
+    date_tn_approved = models.DateTimeField(blank=True, null=True)
+
+    # EP Approved
+    state_ep_approved = models.BooleanField(default=False)
+    date_ep_approved = models.DateTimeField(blank=True, null=True)
+
+    # EP is Approved
+    status_approved = models.BooleanField(default=False)
     date_approved = models.DateTimeField(blank=True, null=True)
+
+    # EP is Realized
+    status_realized = models.BooleanField(default=False)
     date_realized = models.DateTimeField(blank=True, null=True)
+
+    # EP is Completed
+    status_completed = models.BooleanField(default=False)
+    date_completed = models.DateTimeField(blank=True, null=True)
+
     experience_start_date = models.DateTimeField(blank=True, null=True)
+    experience_end_date = models.DateTimeField(blank=True, null=True)
+
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
 
