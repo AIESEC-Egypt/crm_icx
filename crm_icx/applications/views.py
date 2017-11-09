@@ -37,3 +37,9 @@ def application_view(request):
         'filter': f,
     }
     return render(request, 'applications/application_list.html', context=context_dictionary)
+
+@verified_email_required
+def application_detail_view(request, id):
+    pass
+
+
