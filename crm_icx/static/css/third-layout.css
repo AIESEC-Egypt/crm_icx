@@ -10,43 +10,8 @@
   text-align: center
 }
 
-@font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 300;
-  src: local('Poppins Light'), local('Poppins-Light'), url(https://fonts.gstatic.com/s/poppins/v1/D2gN9uyZ9Ucx1fJ1Fhb7sy3USBnSvpkopQaUR-2r7iU.ttf) format('truetype')
-}
-
-@font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 400;
-  src: local('Poppins'), local('Poppins-Regular'), url(https://fonts.gstatic.com/s/poppins/v1/TDTjCH39JjVycIF24TlO-Q.ttf) format('truetype')
-}
-
-@font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  src: local('Poppins Medium'), local('Poppins-Medium'), url(https://fonts.gstatic.com/s/poppins/v1/yQWaOD4iNU5NTY0apN-qjy3USBnSvpkopQaUR-2r7iU.ttf) format('truetype')
-}
-
-@font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 600;
-  src: local('Poppins SemiBold'), local('Poppins-SemiBold'), url(https://fonts.gstatic.com/s/poppins/v1/zO07Oxe3SOlw0l2YX2sdIS3USBnSvpkopQaUR-2r7iU.ttf) format('truetype')
-}
-
-@font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 700;
-  src: local('Poppins Bold'), local('Poppins-Bold'), url(https://fonts.gstatic.com/s/poppins/v1/57TQ-anwthzkETEIO4jESC3USBnSvpkopQaUR-2r7iU.ttf) format('truetype')
-}
-
 body {
-  font-family: Poppins, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 14px;
   color: #737373;
   background-color: #FFF;
@@ -2036,7 +2001,8 @@ header .header-icon:hover {
   position: absolute;
   top: 64px;
   left: 0;
-  background-color: #1f364f;
+  background-color: #037ef3;
+
   width: 80px;
   z-index: 1030;
   opacity: 1;
@@ -2052,7 +2018,7 @@ header .header-icon:hover {
 }
 
 .navigation > li > a + ul, .navigation > li > a[aria-expanded=true] {
-  background-color: #18293d
+  background-color: #FFF;
 }
 
 .main-sidebar .sidebar-category {
@@ -4494,4 +4460,24 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
   -moz-transition: all .2s;
   -o-transition: all .2s;
   transition: all .2s
+}
+
+.alert-debug {
+  color: black;
+  background-color: white;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+/* Display django-debug-toolbar.
+   See https://github.com/django-debug-toolbar/django-debug-toolbar/issues/742
+   and https://github.com/pydanny/cookiecutter-django/issues/317
+*/
+[hidden][style="display: block;"] {
+  display: block !important;
 }

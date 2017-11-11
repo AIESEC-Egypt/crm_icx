@@ -7,7 +7,7 @@ from django.shortcuts import render
 @verified_email_required
 def home(request):
     context_dictionary = {}
-    return render(request, 'pages/home.html', context=context_dictionary)
+    return render(request, 'pages/blue-dashboard.html', context=context_dictionary)
 
 
 def import_data(request):
