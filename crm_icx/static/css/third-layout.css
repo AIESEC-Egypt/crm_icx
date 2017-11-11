@@ -1651,6 +1651,7 @@ body.sidebar-toggled .brand .logo {
 }
 
 body.sidebar-toggled .brand .logo-sm {
+  border-radius: 6px;
   display: none
 }
 
@@ -1798,14 +1799,21 @@ body.sidebar-toggled .page-container {
 }
 
 .brand {
-  width: 80px;
+  width: 60px;
   line-height: 64px;
-  background-color: #1f364f;
+  background-color: #037ef3;
   display: block
 }
 
 .brand .logo {
+  margin-top: 10px;
+  border-radius: 4px;
   display: none
+}
+
+.brand .logo-sm {
+  border-radius: 2px;
+  display: inline
 }
 
 header {
@@ -2003,7 +2011,8 @@ header .header-icon:hover {
   left: 0;
   background-color: #037ef3;
 
-  width: 80px;
+  width: 60px;
+  height: 92vh;
   z-index: 1030;
   opacity: 1;
   -lh-property: 0;
@@ -2199,6 +2208,7 @@ header .header-icon:hover {
   }
 
   body.sidebar-toggled .brand .logo-sm {
+    border-radius: 6px;
     display: none
   }
 
@@ -2361,6 +2371,7 @@ header .header-icon:hover {
   }
 
   .brand .logo-sm {
+    border-radius: 25%;
     display: none
   }
 
@@ -2394,50 +2405,6 @@ header .header-icon:hover {
 
 .docs-cropped .modal-body, .easy-pie-chart, .events-header, .toast:before, .wizard > .steps .number {
   text-align: center
-}
-
-.search-bar {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 64px;
-  background-color: #FFF;
-  border-bottom: 1px solid #e6e6e6;
-  overflow: hidden;
-  opacity: 1;
-  z-index: 1050;
-  -webkit-transform: translate(0, 0);
-  -moz-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate(0, 0);
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s
-}
-
-.search-bar.closed {
-  opacity: 0;
-  -webkit-transform: translate(0, -100%);
-  -moz-transform: translate(0, -100%);
-  -ms-transform: translate(0, -100%);
-  -o-transform: translate(0, -100%);
-  transform: translate(0, -100%)
-}
-
-.search-bar form {
-  margin: 9px
-}
-
-.search-bar form .form-control {
-  border: none
-}
-
-.search-bar form .btn, .search-bar form .btn.active, .search-bar form .btn.focus, .search-bar form .btn:active, .search-bar form .btn:focus, .search-bar form .btn:hover {
-  background-color: transparent !important;
-  border-color: transparent !important
 }
 
 .setting {
@@ -3458,6 +3425,7 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
 .block {
   display: block !important
 }
+
 
 .fw-300 {
   font-weight: 300 !important
