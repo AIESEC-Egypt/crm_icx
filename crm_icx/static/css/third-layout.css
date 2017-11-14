@@ -121,7 +121,7 @@ a.bg-black:focus, a.bg-black:hover {
 }
 
 .bg-primary {
-  background-color: #0773ef;
+  background-color: #037ef3;
   color: #FFF
 }
 
@@ -694,8 +694,8 @@ input[type=radio]:focus, input[type=checkbox]:focus {
 
 .btn-primary {
   color: #FFF;
-  background-color: #0667D6;
-  border-color: #0667D6
+  background-color: #037ef3;
+  border-color: #037ef3
 }
 
 .btn-primary.focus, .btn-primary:focus {
@@ -706,8 +706,8 @@ input[type=radio]:focus, input[type=checkbox]:focus {
 
 .btn-primary:hover {
   color: #FFF !important;
-  background-color: #055bbd !important;
-  border-color: #055bbd !important
+  background-color: #037ef3 !important;
+  border-color: #037ef3 !important
 }
 
 .btn-primary.active, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open > .dropdown-toggle.btn-primary, .open > .dropdown-toggle.btn-primary.focus, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover {
@@ -1806,7 +1806,7 @@ body.sidebar-toggled .page-container {
 }
 
 .brand .logo {
-  margin-top: 10px;
+  /*margin-top: 10px;*/
   border-radius: 4px;
   display: none
 }
@@ -2006,7 +2006,7 @@ header .header-icon:hover {
 }
 
 .main-sidebar {
-  position: absolute;
+  position: fixed;
   top: 64px;
   left: 0;
   background-color: #037ef3;
@@ -2032,6 +2032,7 @@ header .header-icon:hover {
 
 .main-sidebar .sidebar-category {
   text-transform: uppercase;
+  color: #FFF;
   margin-bottom: 2px;
   padding: 15px 20px;
   font-weight: 600;
@@ -2087,7 +2088,8 @@ header .header-icon:hover {
 }
 
 .navigation > li > a.active {
-  box-shadow: inset 2px 0 #0667D6
+  box-shadow: inset 2px 0 #0667D6;
+
 }
 
 .navigation > li > a + ul {
@@ -2166,7 +2168,7 @@ header .header-icon:hover {
 }
 
 .page-container {
-  padding-left: 80px
+  padding-left: 60px
 }
 
 .page-header {
@@ -2194,7 +2196,7 @@ header .header-icon:hover {
   }
 
   body.sidebar-toggled .page-container {
-    padding-left: 80px
+    padding-left: 60px
   }
 }
 
@@ -2208,6 +2210,7 @@ header .header-icon:hover {
   }
 
   body.sidebar-toggled .brand .logo-sm {
+
     border-radius: 6px;
     display: none
   }
@@ -3426,7 +3429,6 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
   display: block !important
 }
 
-
 .fw-300 {
   font-weight: 300 !important
 }
@@ -3783,6 +3785,38 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
   padding-left: 30px !important
 }
 
+.br-2 {
+  border-radius: 2px ;
+}
+
+.br-4 {
+  border-radius: 4px;
+}
+
+.br-6 {
+  border-radius: 6px;
+}
+
+.br-8 {
+  border-radius: 8px;
+}
+
+.br-10 {
+  border-radius: 10px;
+}
+
+.br-15 {
+  border-radius: 15px;
+}
+
+.br-20 {
+  border-radius: 20px;
+}
+
+.br-25 {
+  border-radius: 25px;
+}
+
 .fc-toolbar {
   background-color: #1f364f;
   padding: 10px;
@@ -3942,7 +3976,7 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  height: 100%
+  height: 100vh
 }
 
 .body-bg-full .page-container {
@@ -3963,7 +3997,8 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
 }
 
 .body-bg-full .logo {
-  margin-bottom: 30px
+  margin: 30px;
+  border-radius: 50px;
 }
 
 .body-bg-full .form-control {

@@ -1,279 +1,331 @@
-{% load static i18n %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Umega App - Blue Dashboard</title>
-    <!-- PACE-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/PACE/themes/blue/pace-theme-flash.css' %}">
-    <script type="text/javascript" src="{% static 'plugins/PACE/pace.min.js' %}"></script>
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}">
-    <!-- Fonts-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/themify-icons/themify-icons.css' %}">
-    <!-- Malihu Scrollbar-->
-    <link rel=" stylesheet
-    " type="text/css"
-          href="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}">
-    <!-- Animo.js-->
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'plugins/animo.js/animate-animo.min.css' %}">
-    <!-- Flag Icons-->
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'plugins/flag-icon-css/css/flag-icon.min.css' %}">
-    <!-- Bootstrap Progressbar-->
-    <link rel="stylesheet" type="text/css"
-          href="{% static 'plugins/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}">
-    <!-- Toastr-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/toastr/toastr.min.css' %}">
-    <!-- SpinKit-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/SpinKit/css/spinners/7-three-bounce.css' %}">
-    <!-- Jvector Map-->
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'plugins/jvectormap/jquery-jvectormap-2.0.3.css' %}">
-    <!-- Morris Chart-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/morris.js/morris.css' %}">
-    <!-- DataTables-->
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'plugins/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css"
-          href="{% static 'plugins/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}">
-    <link rel=" stylesheet
-    " type="text/css"
-          href="{% static 'plugins/datatables.net-colreorder-bs/css/colReorder.bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css"
-          href="{% static 'plugins/datatables.net-responsive-bs/css/responsive.bootstrap.min.css' %}">
-    <!-- Weather Icons-->
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons-wind.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons.min.css' %}">
-    <!-- FullCalendar-->
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'plugins/fullcalendar/dist/fullcalendar.min.css' %}">
-    <link rel="stylesheet" type="text/css"
-          href="{% static 'plugins/fullcalendar/dist/fullcalendar.print.css' %}" media="print">
-    <!-- jQuery MiniColors-->
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'plugins/jquery-minicolors/jquery.minicolors.css' %}">
-    <!-- Bootstrap Date Range Picker-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.css' %}">
-    <!-- Primary Style-->
-    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
-    <link rel=" stylesheet
-    " type="text/css" href="{% static 'css/third-layout.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/skins/blue-skin.css' %}">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-<!-- Header start-->
-<header>
-    <a href="{% url 'home' %}" class="brand pull-left">
-        <img src="{% static 'images/logo-light.png' %}" width="70" class="logo">
-        <img src="{% static 'images/logo-light.png' %}" width="40" class="logo-sm">
-    </a>
-    <a href="javascript:" role="button" class="hamburger-menu pull-left"><span></span></a>
-    <ul class="notification-bar list-inline pull-right">
-        <li class="visible-xs"><a href="javascript:;" role="button" class="header-icon search-bar-toggle"><i
-                class="ti-search"></i></a></li>
-        <li class="dropdown"><a id="dropdownMenu1" href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false" class="dropdown-toggle bubble header-icon"><i
-                class="ti-world"></i><span class="badge bg-danger">1</span></a>
-            <div aria-labelledby="dropdownMenu1"
-                 class="dropdown-menu dropdown-menu-right dm-medium fs-12 animated fadeInDown">
-                <h5 class="dropdown-header">You have 1 notifications</h5>
-                <ul data-mcs-theme="minimal-dark" class="media-list mCustomScrollbar">
-                    <li class="media"><a href="javascript:">
-                        <div class="media-left avatar"><img src="{% static 'images/users/17.jpg' %}" alt=""
-                                                            class="media-object img-circle"><span
-                                class="status bg-warning"></span></div>
-                        <div class="media-body">
-                            <h6 class="media-heading">William Carlson</h6>
-                            <p class="text-muted mb-0">Commented on your post</p>
-                        </div>
-                        <div class="media-right text-nowrap">
-                            <time datetime="2015-12-10T20:27:48+07:00" class="fs-11">5 mins</time>
-                        </div>
-                    </a></li>
-                </ul>
-                <div class="dropdown-footer text-center p-10"><a href="javascript:;" class="fw-500 text-muted">See all
-                    notifications</a></div>
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="main-container">
+        <!-- Main Sidebar start-->
+        <aside class="main-sidebar">
+            <div class="user">
+                <h4 class="fs-16 text-white mt-15 mb-5 fw-700">Ali Soliman</h4>
+                <p class="mb-0 fw-300 text-white">MCVP DXP</p>
             </div>
-        </li>
-        <li class="dropdown hidden-xs"><a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button"
-                                          aria-haspopup="true" aria-expanded="false"
-                                          class="dropdown-toggle header-icon lh-1 pt-15 pb-15">
-            <div class="media mt-0">
-                <div class="media-left avatar"><img src="{% static 'images/users/04.jpg' %}" alt=""
-                                                    class=" media-object img-circle"><span
-                        class="status bg-success"></span></div>
-                <div class="media-right media-middle pl-0">
-                    <p class="fs-12 text-base mb-0">Hi, Matthew</p>
-                </div>
-            </div>
-        </a>
-            <ul aria-labelledby="dropdownMenu2" class="dropdown-menu fs-12 animated fadeInDown">
-                {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'users:detail' request.user.username %}"><i class="ti-user mr-5"></i> My Profile</a>
-                    </li>
-                    <li><a href="{% url 'users:update' %}"><i class="ti-settings mr-5"></i> Account Settings</a></li>
-                    <li><a href="{% url 'account_logout' %}"><i class="ti-power-off mr-5"></i> Logout</a></li>
-
-
-                {% else %}
-                    <li class="nav-item">
-                        {# URL provided by django-allauth/account/urls.py #}
-                        <a id="sign-up-link" class="nav-link"
-                           href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        {# URL provided by django-allauth/account/urls.py #}
-                        <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-                    </li>
-                {% endif %}
-
-            </ul>
-        </li>
-    </ul>
-</header>
-<!-- Header end-->
-<div class="main-container">
-    <!-- Main Sidebar start-->
-    <aside class="main-sidebar">
-        <div class="user">
-            <h4 class="fs-16 text-white mt-15 mb-5 fw-700">Ali Soliman</h4>
-            <p class="mb-0 fw-300 text-white">MCVP DXP</p>
-        </div>
-        <ul class="list-unstyled navigation mb-0 text-white">
-            <li class="sidebar-category">Main</li>
-            <li class="panel "><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse1"
-                                  aria-expanded="false" aria-controls="collapse1" class="bubble collapsed"><i
-                    class="ti-home text-white"></i><span class="sidebar-title text-white">Dashboard</span></a>
-            </li>
-            <li class="panel"><a href="widgets.html"><i class="ti-panel"></i><span class="sidebar-title">Widgets </span><span
-                    class="label label-outline label-danger">Updated</span></a></li>
-            <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse3"
-                                 aria-expanded="false" aria-controls="collapse3" class="collapsed"><i
-                    class="ti-shopping-cart"></i><span class="sidebar-title">E-commerce</span></a>
-            </li>
-            <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse4"
-                                 aria-expanded="false" aria-controls="collapse4" class="collapsed"><i
-                    class="ti-paint-bucket"></i><span class="sidebar-title">Color system</span></a>
-                <ul id="collapse4" class="list-unstyled collapse">
-                    <li><a href="green-system.html">Green</a></li>
-                    <li><a href="blue-system.html">Blue</a></li>
-                    <li><a href="purple-system.html">Purple</a></li>
-                    <li><a href="red-system.html">Red</a></li>
-                    <li><a href="yellow-system.html">Yellow</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="sidebar-category">Server Status</div>
-        <div class="sidebar-widget">
-            <ul class="list-unstyled pl-25 pr-25">
-                <li class="mb-20">
-                    <div class="block clearfix mb-10"><span class="pull-left fs-12 text-muted">CPU Used</span><span
-                            class="pull-right label label-outline label-warning">65%</span></div>
-                    <div class="progress progress-xs bg-light mb-0">
-                        <div role="progressbar" data-transitiongoal="65"
-                             class="progress-bar progress-bar-warning"></div>
-                    </div>
+            <ul class="list-unstyled navigation mb-0 text-white">
+                <li class="sidebar-category">Main</li>
+                <li class="panel "><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse1"
+                                      aria-expanded="false" aria-controls="collapse1" class="bubble collapsed"><i
+                        class="ti-home text-white"></i><span class="sidebar-title text-white">Dashboard</span></a>
                 </li>
-                <li class="mb-20">
-                    <div class="block clearfix mb-10"><span class="pull-left fs-12 text-muted">Bandwidth</span><span
-                            class="pull-right label label-outline label-danger">80%</span></div>
-                    <div class="progress progress-xs bg-light mb-0">
-                        <div role="progressbar" data-transitiongoal="80" class="progress-bar progress-bar-danger"></div>
-                    </div>
+                <li class="panel"><a href="widgets.html"><i class="ti-panel"></i><span
+                        class="sidebar-title">Widgets </span><span
+                        class="label label-outline label-danger">Updated</span></a></li>
+                <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse3"
+                                     aria-expanded="false" aria-controls="collapse3" class="collapsed"><i
+                        class="ti-shopping-cart"></i><span class="sidebar-title">E-commerce</span></a>
+                </li>
+                <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse4"
+                                     aria-expanded="false" aria-controls="collapse4" class="collapsed"><i
+                        class="ti-paint-bucket"></i><span class="sidebar-title">Color system</span></a>
+                    <ul id="collapse4" class="list-unstyled collapse">
+                        <li><a href="green-system.html">Green</a></li>
+                        <li><a href="blue-system.html">Blue</a></li>
+                        <li><a href="purple-system.html">Purple</a></li>
+                        <li><a href="red-system.html">Red</a></li>
+                        <li><a href="yellow-system.html">Yellow</a></li>
+                    </ul>
                 </li>
             </ul>
-        </div>
-    </aside>
-    <!-- Main Sidebar end-->
-    <div class="page-container">
-        <div class="page-header clearfix">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="mt-0 mb-5">Welcome to Umega</h4>
-                    <p class="text-muted mb-0">Responsive Web App Kit</p>
+
+        </aside>
+        <!-- Main Sidebar end-->
+        <div class="page-container">
+            <div class="page-header clearfix">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mt-0 mb-5">CRM ICX Landing Page</h4>
+                        <p class="text-muted mb-0">Responsive Web App Kit</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">2016 &copy; <a href="http://themeforest.net/item/umega-responsive-web-app-kit/15482080">Umega
-            - Responsive Web App Kit</a> by <a href="http://themeforest.net/user/lethemes" target="_blank">Lethemes.</a>
+            <div class="page-content container-fluid">
+                <div class="row">
+                    <div class="col-sm-1 p-0">
+                    </div>
+                    <div class="col-sm-2 p-0">
+                        <div class="page-header index-ranking clearfix">
+                            <div class="widget text-center no-border widget-blue clearfix p-10">
+                                <h5 class="m-0 text-uppercase light-font">Sign Ups</h5>
+                                <div class="fs-22 light-font">{{ analytics_dictionary.sign_ups }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 p-0">
+                        <div class="page-header index-ranking clearfix">
+                            <div class="widget text-center no-border widget-blue clearfix p-10">
+                                <h5 class="m-0 text-uppercase light-font">Applied</h5>
+                                <div class="fs-22 light-font">{{ analytics_dictionary.applied }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 p-0">
+                        <div class="page-header index-ranking clearfix">
+                            <div class="widget text-center no-border widget-blue clearfix p-10">
+                                <h5 class="m-0 text-uppercase light-font">Accepted</h5>
+                                <div class="fs-22 light-font">{{ analytics_dictionary.accepted }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 p-0">
+                        <div class="page-header index-ranking clearfix">
+                            <div class="widget text-center no-border widget-blue clearfix p-10">
+                                <h5 class="m-0 text-uppercase light-font">Approved</h5>
+                                <div class="fs-22 light-font">{{ analytics_dictionary.approved }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 p-0">
+                        <div class="page-header index-ranking clearfix">
+                            <div class="widget text-center no-border widget-blue clearfix p-10">
+                                <h5 class="m-0 text-uppercase light-font">Realized</h5>
+                                <div class="fs-22 light-font">{{ analytics_dictionary.realized }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 p-0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-heading">
+                                <h3 class="widget-title">Tabs</h3>
+                            </div>
+                            <div class="widget-body">
+                                <div role="tabpanel">
+                                    <ul role="tablist" class="nav nav-tabs mb-15">
+                                        <li role="presentation" class="active"><a id="signups-tab" href="#signups"
+                                                                                  role="tab"
+                                                                                  data-toggle="tab"
+                                                                                  aria-controls="signups"
+                                                                                  aria-expanded="true">Sign Ups</a></li>
+                                        <li role="presentation"><a id="applied-tab" href="#applied" role="tab"
+                                                                   data-toggle="tab" aria-controls="profile"
+                                                                   aria-expanded="false">Applied</a></li>
+                                        <li role="presentation"><a id="accepted-tab" href="#accepted" role="tab"
+                                                                   data-toggle="tab" aria-controls="profile"
+                                                                   aria-expanded="false">Accepted</a></li>
+                                        <li role="presentation"><a id="realized-tab" href="#realized" role="tab"
+                                                                   data-toggle="tab" aria-controls="profile"
+                                                                   aria-expanded="false">Realized</a></li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div id="signups" role="tabpanel" aria-labelledby="signups-tab"
+                                             class="tab-pane fade active in">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="widget">
+                                                        <div class="widget-body">
+                                                            <table id="signups-table" cellspacing="0" width="100%"
+                                                                   class="table table-striped table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th style="min-width: 100px">EP Name</th>
+                                                                    <th>EXPA ID</th>
+                                                                    <th>Email</th>
+                                                                    <th>Phone No.</th>
+                                                                    <th>Created At</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                {% for ep in eps %}
+                                                                    <tr>
+                                                                        <td>{{ ep.first_name }} {{ ep.last_name }}</td>
+                                                                        <td>{{ ep.id }}</td>
+                                                                        <td>{{ ep.email }}</td>
+                                                                        <td>{{ ep.phone_number }}</td>
+                                                                        <td>{{ ep.created_at }}</td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="applied" role="tabpanel" aria-labelledby="applied-tab"
+                                             class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="widget">
+                                                        <div class="widget-body">
+                                                            <table id="applied-table" cellspacing="0" width="100%"
+                                                                   class="example-2 table table-striped table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th style="min-width: 100px">EP Name</th>
+                                                                    <th>EXPA ID</th>
+                                                                    <th>Email</th>
+                                                                    <th>Phone No.</th>
+                                                                    <th>Created At</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                {% for ep in eps_dictionary.eps_applied %}
+                                                                    <tr>
+                                                                        <td>{{ ep.first_name }} {{ ep.last_name }}</td>
+                                                                        <td>{{ ep.id }}</td>
+                                                                        <td>{{ ep.email }}</td>
+                                                                        <td>{{ ep.phone_number }}</td>
+                                                                        <td>{{ ep.created_at }}</td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="accepted" role="tabpanel" aria-labelledby="accepted-tab"
+                                             class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="widget">
+                                                        <div class="widget-body">
+                                                            <table id="accepted-table" cellspacing="0" width="100%"
+                                                                   class="example-2 table table-striped table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th style="min-width: 100px">EP Name</th>
+                                                                    <th>EXPA ID</th>
+                                                                    <th>Email</th>
+                                                                    <th>Phone No.</th>
+                                                                    <th>Created At</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                {% for ep in eps_dictionary.eps_accepted %}
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a href="{% url 'ep_profile' ep.id %}">{{ ep.first_name }} {{ ep.last_name }}</a>
+                                                                        </td>
+                                                                        <td>{{ ep.id }}</td>
+                                                                        <td>{{ ep.email }}</td>
+                                                                        <td>{{ ep.phone_number }}</td>
+                                                                        <td>{{ ep.created_at }}</td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="realized" role="tabpanel" aria-labelledby="realized-tab"
+                                             class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="widget">
+                                                        <div class="widget-body">
+                                                            <table id="realized-table" cellspacing="0" width="100%"
+                                                                   class="example-2 table table-striped table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th style="min-width: 100px">EP Name</th>
+                                                                    <th>EXPA ID</th>
+                                                                    <th>Email</th>
+                                                                    <th>Phone No.</th>
+                                                                    <th>Created At</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                {% for ep in eps_dictionary.eps_realized %}
+                                                                    <tr>
+                                                                        <td>{{ ep.first_name }} {{ ep.last_name }}</td>
+                                                                        <td>{{ ep.id }}</td>
+                                                                        <td>{{ ep.email }}</td>
+                                                                        <td>{{ ep.phone_number }}</td>
+                                                                        <td>{{ ep.created_at }}</td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination">
+    <span class="step-links">
+        {% if eps.has_previous %}
+            <a href="?page={{ applications.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ eps.number }} of {{ eps.paginator.num_pages }}.
+        </span>
+
+        {% if eps.has_next %}
+            <a href="?page={{ eps.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer">2016 &copy; <a href="http://themeforest.net/item/umega-responsive-web-app-kit/15482080">Umega
+                - Responsive Web App Kit</a> by <a href="http://themeforest.net/user/lethemes"
+                                                   target="_blank">Lethemes.</a>
+            </div>
         </div>
     </div>
-</div>
+{% endblock %}
 
-<!-- jQuery-->
-<script type="text/javascript" src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
-<!-- Bootstrap JavaScript-->
-<script type="text/javascript" src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-<!-- Malihu Scrollbar-->
-<script type="text/javascript"
-        src="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-<!-- Animo.js-->
-<script type="text/javascript" src="{% static 'plugins/animo.js/animo.min.js' %}"></script>
-<!-- Bootstrap Progressbar-->
-<script type="text/javascript" src="{% static 'plugins/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
-<!-- jQuery Easy Pie Chart-->
-<script type="text/javascript"
-        src="{% static 'plugins/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js' %}"></script>
-<!-- Toastr-->
-<script type="text/javascript" src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
-<!-- MomentJS-->
-<script type="text/javascript" src="{% static 'plugins/moment/min/moment.min.js' %}"></script>
-<!-- jQuery BlockUI-->
-<script type="text/javascript" src="{% static 'plugins/blockUI/jquery.blockUI.js' %}"></script>
-<!-- jQuery Counter Up-->
-<script type="text/javascript" src="{% static 'plugins/jquery-waypoints/waypoints.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/Counter-Up/jquery.counterup.min.js' %}"></script>
-<!-- Jvector Map-->
-<script type="text/javascript" src="{% static 'plugins/jvectormap/jquery-jvectormap-2.0.3.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/jvectormap/maps/jquery-jvectormap-world-mill.js' %}"></script>
-<!-- Flot Charts-->
-<script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.resize.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/flot.curvedlines/curvedLines.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
-<!-- Morris Chart-->
-<script type="text/javascript" src="{% static 'plugins/raphael/raphael-min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/morris.js/morris.min.js' %}"></script>
-<!-- DataTables-->
-<script type="text/javascript" src="{% static 'plugins/datatables.net/js/jquery.dataTables.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
-<script type="text/javascript"
-        src="{% static 'plugins/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
-<script type="text/javascript"
-        src="{% static 'plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/jszip/dist/jszip.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/pdfmake/build/pdfmake.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/pdfmake/build/vfs_fonts.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
-<script type="text/javascript"
-        src="{% static 'plugins/datatables.net-colreorder/js/dataTables.colReorder.min.js' %}"></script>
-<script type="text/javascript"
-        src="{% static 'plugins/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
-<script type="text/javascript"
-        src="{% static 'plugins/datatables.net-responsive-bs/js/responsive.bootstrap.js' %}"></script>
-<!-- jQuery UI-->
-<script type="text/javascript" src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
-<!-- FullCalendar-->
-<script type="text/javascript" src="{% static 'plugins/fullcalendar/dist/fullcalendar.min.js' %}"></script>
-<!-- jQuery MiniColors-->
-<script type="text/javascript" src="{% static 'plugins/jquery-minicolors/jquery.minicolors.min.js' %}"></script>
-<!-- Bootstrap Date Range Picker-->
-<script type="text/javascript" src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
-<!-- Custom JS-->
-<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/demo.js' %}"></script>
-{#<script type="text/javascript" src="{% static 'build/js/page-content/skins/blue-dashboard.js' %}"></script>#}
-</body>
-</html>
+{% block extra_javascript %}
+    <script>
+
+        $(document).ready(function () {
+            var signupTable = $('#signups-table').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print'],
+                'order': [[1, 'desc']],
+                'paging': false,
+                'searching': false
+            });
+            var appliedTable = $('#applied-table').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print'],
+                'order': [[1, 'desc']],
+                "pageLength": 50
+            });
+            var acceptedTable = $('#accepted-table').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print'],
+                'order': [[1, 'desc']],
+                "pageLength": 50
+            });
+            var realizedTable = $('#realized-table').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print'],
+                'order': [[1, 'desc']],
+                "pageLength": 50
+            });
+
+            signupTable.buttons().container().appendTo('#signups-table_wrapper .col-sm-6:eq(0)');
+            appliedTable.buttons().container().appendTo('#applied-table_wrapper .col-sm-6:eq(0)');
+            acceptedTable.buttons().container().appendTo('#accepted-table_wrapper .col-sm-6:eq(0)');
+            realizedTable.buttons().container().appendTo('#realized-table_wrapper .col-sm-6:eq(0)');
+        });
+    </script>
+{% endblock %}
