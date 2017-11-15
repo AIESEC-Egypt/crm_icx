@@ -1994,6 +1994,7 @@ header .header-icon:hover {
 }
 
 .main-sidebar .sidebar-title, .main-sidebar .sidebar-widget, .user {
+  color: white;
   display: none
 }
 
@@ -2026,8 +2027,12 @@ header .header-icon:hover {
   transform: translate(0, 0)
 }
 
-.navigation > li > a + ul, .navigation > li > a[aria-expanded=true] {
+.navigation > li > a[aria-expanded=true], .navigation > li > a + ul {
   background-color: #FFF;
+}
+
+.navigation > li > a[aria-expanded=true] > i {
+  color: #037ef3;
 }
 
 .main-sidebar .sidebar-category {
@@ -2070,6 +2075,7 @@ header .header-icon:hover {
 }
 
 .navigation > li > a > i {
+  color: #FFF;
   font-size: 24px;
   width: 24px;
   height: 24px;
@@ -2134,6 +2140,7 @@ header .header-icon:hover {
 }
 
 .navigation ul li a.active, .navigation ul li a:hover {
+  background-color: #037ef3;
   color: #FFF
 }
 
@@ -2253,6 +2260,7 @@ header .header-icon:hover {
   }
 
   .main-sidebar .sidebar-title {
+    color: white;
     display: inline
   }
 
@@ -3786,7 +3794,7 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
 }
 
 .br-2 {
-  border-radius: 2px ;
+  border-radius: 2px;
 }
 
 .br-4 {

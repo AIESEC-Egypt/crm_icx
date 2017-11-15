@@ -1,263 +1,228 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <div class="main-container">
-        <!-- Main Sidebar start-->
-        <aside class="main-sidebar">
-            <div class="user">
-                <h4 class="fs-16 text-white mt-15 mb-5 fw-700">Ali Soliman</h4>
-                <p class="mb-0 fw-300 text-white">MCVP DXP</p>
-            </div>
-            <ul class="list-unstyled navigation mb-0 text-white">
-                <li class="sidebar-category">Main</li>
-                <li class="panel "><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse1"
-                                      aria-expanded="false" aria-controls="collapse1" class="bubble collapsed"><i
-                        class="ti-home text-white"></i><span class="sidebar-title text-white">Dashboard</span></a>
-                </li>
-                <li class="panel"><a href="widgets.html"><i class="ti-panel"></i><span
-                        class="sidebar-title">Widgets </span><span
-                        class="label label-outline label-danger">Updated</span></a></li>
-                <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse3"
-                                     aria-expanded="false" aria-controls="collapse3" class="collapsed"><i
-                        class="ti-shopping-cart"></i><span class="sidebar-title">E-commerce</span></a>
-                </li>
-                <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse4"
-                                     aria-expanded="false" aria-controls="collapse4" class="collapsed"><i
-                        class="ti-paint-bucket"></i><span class="sidebar-title">Color system</span></a>
-                    <ul id="collapse4" class="list-unstyled collapse">
-                        <li><a href="green-system.html">Green</a></li>
-                        <li><a href="blue-system.html">Blue</a></li>
-                        <li><a href="purple-system.html">Purple</a></li>
-                        <li><a href="red-system.html">Red</a></li>
-                        <li><a href="yellow-system.html">Yellow</a></li>
-                    </ul>
-                </li>
-            </ul>
 
-        </aside>
-        <!-- Main Sidebar end-->
-        <div class="page-container">
-            <div class="page-header clearfix">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="mt-0 mb-5">CRM ICX Landing Page</h4>
-                        <p class="text-muted mb-0">Responsive Web App Kit</p>
+
+{% block page_container %}
+    <div class="page-container">
+    <div class="page-header clearfix">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4 class="mt-0 mb-5">CRM ICX Landing Page</h4>
+                <p class="text-muted mb-0">Responsive Web App Kit</p>
+            </div>
+        </div>
+    </div>
+    <div class="page-content container-fluid">
+        <div class="row mb-30">
+            <div class="col-sm-1 p-0">
+            </div>
+            <div class="col-sm-2 p-0">
+                <div class="page-header index-ranking clearfix">
+                    <div class="widget text-center no-border widget-blue clearfix p-10">
+                        <h5 class="m-0 text-uppercase light-font">Sign Ups</h5>
+                        <div class="fs-22 light-font">{{ analytics_dictionary.sign_ups }}</div>
                     </div>
                 </div>
             </div>
-            <div class="page-content container-fluid">
-                <div class="row mb-30">
-                    <div class="col-sm-1 p-0">
-                    </div>
-                    <div class="col-sm-2 p-0">
-                        <div class="page-header index-ranking clearfix">
-                            <div class="widget text-center no-border widget-blue clearfix p-10">
-                                <h5 class="m-0 text-uppercase light-font">Sign Ups</h5>
-                                <div class="fs-22 light-font">{{ analytics_dictionary.sign_ups }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 p-0">
-                        <div class="page-header index-ranking clearfix">
-                            <div class="widget text-center no-border widget-blue clearfix p-10">
-                                <h5 class="m-0 text-uppercase light-font">Applied</h5>
-                                <div class="fs-22 light-font">{{ analytics_dictionary.applied }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 p-0">
-                        <div class="page-header index-ranking clearfix">
-                            <div class="widget text-center no-border widget-blue clearfix p-10">
-                                <h5 class="m-0 text-uppercase light-font">Accepted</h5>
-                                <div class="fs-22 light-font">{{ analytics_dictionary.accepted }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 p-0">
-                        <div class="page-header index-ranking clearfix">
-                            <div class="widget text-center no-border widget-blue clearfix p-10">
-                                <h5 class="m-0 text-uppercase light-font">Approved</h5>
-                                <div class="fs-22 light-font">{{ analytics_dictionary.approved }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 p-0">
-                        <div class="page-header index-ranking clearfix">
-                            <div class="widget text-center no-border widget-blue clearfix p-10">
-                                <h5 class="m-0 text-uppercase light-font">Realized</h5>
-                                <div class="fs-22 light-font">{{ analytics_dictionary.realized }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-1 p-0">
+            <div class="col-sm-2 p-0">
+                <div class="page-header index-ranking clearfix">
+                    <div class="widget text-center no-border widget-blue clearfix p-10">
+                        <h5 class="m-0 text-uppercase light-font">Applied</h5>
+                        <div class="fs-22 light-font">{{ analytics_dictionary.applied }}</div>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-2 p-0">
+                <div class="page-header index-ranking clearfix">
+                    <div class="widget text-center no-border widget-blue clearfix p-10">
+                        <h5 class="m-0 text-uppercase light-font">Accepted</h5>
+                        <div class="fs-22 light-font">{{ analytics_dictionary.accepted }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 p-0">
+                <div class="page-header index-ranking clearfix">
+                    <div class="widget text-center no-border widget-blue clearfix p-10">
+                        <h5 class="m-0 text-uppercase light-font">Approved</h5>
+                        <div class="fs-22 light-font">{{ analytics_dictionary.approved }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 p-0">
+                <div class="page-header index-ranking clearfix">
+                    <div class="widget text-center no-border widget-blue clearfix p-10">
+                        <h5 class="m-0 text-uppercase light-font">Realized</h5>
+                        <div class="fs-22 light-font">{{ analytics_dictionary.realized }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 p-0">
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="widget">
-                            <div class="widget-heading">
-                                <h3 class="widget-title">Tabs</h3>
-                            </div>
-                            <div class="widget-body">
-                                <div role="tabpanel">
-                                    <ul role="tablist" class="nav nav-tabs mb-15">
-                                        <li role="presentation" class="active"><a id="signups-tab" href="#signups"
-                                                                                  role="tab"
-                                                                                  data-toggle="tab"
-                                                                                  aria-controls="signups"
-                                                                                  aria-expanded="true">Sign Ups</a></li>
-                                        <li role="presentation"><a id="applied-tab" href="#applied" role="tab"
-                                                                   data-toggle="tab" aria-controls="profile"
-                                                                   aria-expanded="false">Applied</a></li>
-                                        <li role="presentation"><a id="accepted-tab" href="#accepted" role="tab"
-                                                                   data-toggle="tab" aria-controls="profile"
-                                                                   aria-expanded="false">Accepted</a></li>
-                                        <li role="presentation"><a id="realized-tab" href="#realized" role="tab"
-                                                                   data-toggle="tab" aria-controls="profile"
-                                                                   aria-expanded="false">Realized</a></li>
-                                    </ul>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <div class="widget-heading">
+                        <h3 class="widget-title">Tabs</h3>
+                    </div>
+                    <div class="widget-body">
+                        <div role="tabpanel">
+                            <ul role="tablist" class="nav nav-tabs mb-15">
+                                <li role="presentation" class="active"><a id="signups-tab" href="#signups"
+                                                                          role="tab"
+                                                                          data-toggle="tab"
+                                                                          aria-controls="signups"
+                                                                          aria-expanded="true">Sign Ups</a></li>
+                                <li role="presentation"><a id="applied-tab" href="#applied" role="tab"
+                                                           data-toggle="tab" aria-controls="profile"
+                                                           aria-expanded="false">Applied</a></li>
+                                <li role="presentation"><a id="accepted-tab" href="#accepted" role="tab"
+                                                           data-toggle="tab" aria-controls="profile"
+                                                           aria-expanded="false">Accepted</a></li>
+                                <li role="presentation"><a id="realized-tab" href="#realized" role="tab"
+                                                           data-toggle="tab" aria-controls="profile"
+                                                           aria-expanded="false">Realized</a></li>
+                            </ul>
 
-                                    <div class="tab-content">
-                                        <div id="signups" role="tabpanel" aria-labelledby="signups-tab"
-                                             class="tab-pane fade active in">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="widget">
-                                                        <div class="widget-body">
-                                                            <table id="signups-table" cellspacing="0" width="100%"
-                                                                   class="table table-striped table-bordered">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th style="min-width: 100px">EP Name</th>
-                                                                    <th>EXPA ID</th>
-                                                                    <th>Email</th>
-                                                                    <th>Phone No.</th>
-                                                                    <th>Created At</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
+                            <div class="tab-content">
+                                <div id="signups" role="tabpanel" aria-labelledby="signups-tab"
+                                     class="tab-pane fade active in">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="widget">
+                                                <div class="widget-body">
+                                                    <table id="signups-table" cellspacing="0" width="100%"
+                                                           class="table table-striped table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="min-width: 100px">EP Name</th>
+                                                            <th>EXPA ID</th>
+                                                            <th>Email</th>
+                                                            <th>Phone No.</th>
+                                                            <th>Created At</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                                                {% for ep in eps %}
-                                                                    <tr>
-                                                                        <td>{{ ep.first_name }} {{ ep.last_name }}</td>
-                                                                        <td>{{ ep.id }}</td>
-                                                                        <td>{{ ep.email }}</td>
-                                                                        <td>{{ ep.phone_number }}</td>
-                                                                        <td>{{ ep.created_at }}</td>
-                                                                    </tr>
-                                                                {% endfor %}
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                        {% for ep in eps %}
+                                                            <tr>
+                                                                <td>{{ ep.first_name }} {{ ep.last_name }}</td>
+                                                                <td>{{ ep.id }}</td>
+                                                                <td>{{ ep.email }}</td>
+                                                                <td>{{ ep.phone_number }}</td>
+                                                                <td>{{ ep.created_at }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="applied" role="tabpanel" aria-labelledby="applied-tab"
-                                             class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="widget">
-                                                        <div class="widget-body">
-                                                            <table id="applied-table" cellspacing="0" width="100%"
-                                                                   class="example-2 table table-striped table-bordered">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th style="min-width: 100px">EP Name</th>
-                                                                    <th>EXPA ID</th>
-                                                                    <th>Email</th>
-                                                                    <th>Phone No.</th>
-                                                                    <th>Created At</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
+                                    </div>
+                                </div>
+                                <div id="applied" role="tabpanel" aria-labelledby="applied-tab"
+                                     class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="widget">
+                                                <div class="widget-body">
+                                                    <table id="applied-table" cellspacing="0" width="100%"
+                                                           class="example-2 table table-striped table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="min-width: 100px">EP Name</th>
+                                                            <th>EXPA ID</th>
+                                                            <th>Email</th>
+                                                            <th>Phone No.</th>
+                                                            <th>Created At</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                                                {% for ep in eps_dictionary.eps_applied %}
-                                                                    <tr>
-                                                                        <td>{{ ep.first_name }} {{ ep.last_name }}</td>
-                                                                        <td>{{ ep.id }}</td>
-                                                                        <td>{{ ep.email }}</td>
-                                                                        <td>{{ ep.phone_number }}</td>
-                                                                        <td>{{ ep.created_at }}</td>
-                                                                    </tr>
-                                                                {% endfor %}
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                        {% for ep in eps_dictionary.eps_applied %}
+                                                            <tr>
+                                                                <td>{{ ep.first_name }} {{ ep.last_name }}</td>
+                                                                <td>{{ ep.id }}</td>
+                                                                <td>{{ ep.email }}</td>
+                                                                <td>{{ ep.phone_number }}</td>
+                                                                <td>{{ ep.created_at }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="accepted" role="tabpanel" aria-labelledby="accepted-tab"
-                                             class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="widget">
-                                                        <div class="widget-body">
-                                                            <table id="accepted-table" cellspacing="0" width="100%"
-                                                                   class="example-2 table table-striped table-bordered">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th style="min-width: 100px">EP Name</th>
-                                                                    <th>EXPA ID</th>
-                                                                    <th>Email</th>
-                                                                    <th>Phone No.</th>
-                                                                    <th>Created At</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
+                                    </div>
+                                </div>
+                                <div id="accepted" role="tabpanel" aria-labelledby="accepted-tab"
+                                     class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="widget">
+                                                <div class="widget-body">
+                                                    <table id="accepted-table" cellspacing="0" width="100%"
+                                                           class="example-2 table table-striped table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="min-width: 100px">EP Name</th>
+                                                            <th>EXPA ID</th>
+                                                            <th>Email</th>
+                                                            <th>Phone No.</th>
+                                                            <th>Created At</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                                                {% for ep in eps_dictionary.eps_accepted %}
-                                                                    <tr>
-                                                                        <td>
-                                                                            <a href="{% url 'ep_profile' ep.id %}">{{ ep.first_name }} {{ ep.last_name }}</a>
-                                                                        </td>
-                                                                        <td>{{ ep.id }}</td>
-                                                                        <td>{{ ep.email }}</td>
-                                                                        <td>{{ ep.phone_number }}</td>
-                                                                        <td>{{ ep.created_at }}</td>
-                                                                    </tr>
-                                                                {% endfor %}
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                        {% for ep in eps_dictionary.eps_accepted %}
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{% url 'ep_profile' ep.id %}">{{ ep.first_name }} {{ ep.last_name }}</a>
+                                                                </td>
+                                                                <td>{{ ep.id }}</td>
+                                                                <td>{{ ep.email }}</td>
+                                                                <td>{{ ep.phone_number }}</td>
+                                                                <td>{{ ep.created_at }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="realized" role="tabpanel" aria-labelledby="realized-tab"
-                                             class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="widget">
-                                                        <div class="widget-body">
-                                                            <table id="realized-table" cellspacing="0" width="100%"
-                                                                   class="example-2 table table-striped table-bordered">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th style="min-width: 100px">EP Name</th>
-                                                                    <th>EXPA ID</th>
-                                                                    <th>Email</th>
-                                                                    <th>Phone No.</th>
-                                                                    <th>Created At</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
+                                    </div>
+                                </div>
+                                <div id="realized" role="tabpanel" aria-labelledby="realized-tab"
+                                     class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="widget">
+                                                <div class="widget-body">
+                                                    <table id="realized-table" cellspacing="0" width="100%"
+                                                           class="example-2 table table-striped table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="min-width: 100px">EP Name</th>
+                                                            <th>EXPA ID</th>
+                                                            <th>Email</th>
+                                                            <th>Phone No.</th>
+                                                            <th>Created At</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                                                {% for ep in eps_dictionary.eps_realized %}
-                                                                    <tr>
-                                                                        <td>{{ ep.first_name }} {{ ep.last_name }}</td>
-                                                                        <td>{{ ep.id }}</td>
-                                                                        <td>{{ ep.email }}</td>
-                                                                        <td>{{ ep.phone_number }}</td>
-                                                                        <td>{{ ep.created_at }}</td>
-                                                                    </tr>
-                                                                {% endfor %}
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                        {% for ep in eps_dictionary.eps_realized %}
+                                                            <tr>
+                                                                <td>{{ ep.first_name }} {{ ep.last_name }}</td>
+                                                                <td>{{ ep.id }}</td>
+                                                                <td>{{ ep.email }}</td>
+                                                                <td>{{ ep.phone_number }}</td>
+                                                                <td>{{ ep.created_at }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -266,30 +231,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pagination">
-    <span class="step-links">
-        {% if eps.has_previous %}
-            <a href="?page={{ applications.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ eps.number }} of {{ eps.paginator.num_pages }}.
-        </span>
-
-        {% if eps.has_next %}
-            <a href="?page={{ eps.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-                    </div>
-
                 </div>
             </div>
-            <div class="footer">2016 &copy; <a href="http://themeforest.net/item/umega-responsive-web-app-kit/15482080">Umega
-                - Responsive Web App Kit</a> by <a href="http://themeforest.net/user/lethemes"
-                                                   target="_blank">Lethemes.</a>
+            <div class="pagination">
+                        <span class="step-links">
+                            {% if eps.has_previous %}
+                                <a href="?page={{ applications.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ eps.number }} of {{ eps.paginator.num_pages }}.
+                            </span>
+
+                            {% if eps.has_next %}
+                                <a href="?page={{ eps.next_page_number }}">next</a>
+                            {% endif %}
+                        </span>
             </div>
         </div>
     </div>
+    {% include 'snippets/footer.html' %}
 {% endblock %}
 
 {% block extra_javascript %}

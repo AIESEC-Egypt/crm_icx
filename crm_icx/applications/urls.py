@@ -6,6 +6,6 @@ urlpatterns = [
     url(
         regex=r'^$',
         view=views.application_view,
-        name='applications'
+        name='applications_list'
     ),
 ]

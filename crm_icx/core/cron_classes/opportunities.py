@@ -1,11 +1,11 @@
 import requests
+from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django_cron import CronJobBase, Schedule
 
-from django.conf import settings
 from crm_icx.core.models import *
-from crm_icx.people.models import Manager
 from crm_icx.opportunities.models import *
+from crm_icx.people.models import Manager
 
 
 class UpdateOpportunities(CronJobBase):
@@ -27,6 +27,7 @@ class UpdateOpportunities(CronJobBase):
 def update_opportunity(opportunity, opportunity_data):
     opportunity.created_at = opportunity_data['created_at']
     opportunity.updated_at = opportunity_data['updated_at']
+    opportunity.openings = opportunity_data['openings']
 
     opportunity_managers_json = opportunity_data['managers']
 

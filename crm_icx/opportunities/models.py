@@ -16,6 +16,7 @@ class ProgramType(models.Model):
 class Opportunity(models.Model):
     title = models.CharField(max_length=256)
     status = models.CharField(max_length=256)
+    openings = models.IntegerField(default=0)
 
     # DateTime Fields
     latest_end_date = models.DateTimeField()

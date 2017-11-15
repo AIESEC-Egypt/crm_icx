@@ -167,6 +167,45 @@
 
 
 {% block content %}
+    <div class="main-container">
+        {% block main_sidebar %}
+            <!-- Main Sidebar start-->
+            <aside class="main-sidebar">
+                <div class="user">
+                    <h4 class="fs-16 text-white mt-15 mb-5 fw-700">Ali Soliman</h4>
+                    <p class="mb-0 fw-300 text-white">MCVP DXP</p>
+                </div>
+                <ul class="list-unstyled navigation mb-0 text-white">
+                    <li class="sidebar-category">Main</li>
+                    <li class="panel"><a href="{% url 'home' %}"><i
+                            class="ti-home"></i><span
+                            class="sidebar-title">Dashboard</span></a></li>
+                    <li class="panel"><a href="{% url 'opportunities:opportunities_list' %}"><i
+                            class="ti-world text-white"></i><span
+                            class="sidebar-title">Opportunities </span></a></li>
+                    <li class="panel"><a href="{% url 'applications:applications_list' %}"><i
+                            class="ti-layers-alt"></i><span
+                            class="sidebar-title">Applications </span></a></li>
+                    <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation"
+                                         href="#collapse4"
+                                         aria-expanded="false" aria-controls="collapse4" class="collapsed"><i
+                            class="ti-paint-bucket"></i><span class="sidebar-title">Color system</span></a>
+                        <ul id="collapse4" class="list-unstyled collapse">
+                            <li><a href="green-system.html">Green</a></li>
+                            <li><a href="blue-system.html">Blue</a></li>
+                            <li><a href="purple-system.html">Purple</a></li>
+                            <li><a href="red-system.html">Red</a></li>
+                            <li><a href="yellow-system.html">Yellow</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </aside>
+            <!-- Main Sidebar end-->
+        {% endblock %}
+        {% block page_container %}
+        {% endblock %}
+    </div>
 {% endblock %}
 
 {% block modal %}{% endblock modal %}
@@ -240,7 +279,6 @@
     <script type="text/javascript" src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
     <!-- Custom JS-->
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/demo.js' %}"></script>
     {#<script type="text/javascript" src="{% static 'build/js/page-content/skins/blue-dashboard.js' %}"></script>#}
 {% endblock javascript %}
 {% block extra_javascript %}
