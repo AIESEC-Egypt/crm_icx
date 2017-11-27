@@ -1,12 +1,26 @@
-from django.db import models
-from crm_icx.core.constants import *
-import django_filters
+import datetime
 
+import django_filters
+from django.db import models
+
+from crm_icx.core.constants import *
 # Create your models here.
 from crm_icx.core.models import Committee
 
 
 class Timeline(models.Model):
+    # Survey Filled
+    state_application_survey_sent = models.BooleanField(default=False)
+    date_application_survey_sent = models.DateTimeField(blank=True, null=True)
+
+    # Survey Filled
+    state_application_survey_filled = models.BooleanField(default=False)
+    date_application_survey_filled = models.DateTimeField(blank=True, null=True)
+
+    # Survey Filled
+    state_application_survey_reviewed = models.BooleanField(default=False)
+    date_application_survey_reviewed = models.DateTimeField(blank=True, null=True)
+
     # Acceptance Note Signed
     state_an_signed = models.BooleanField(default=False)
     date_an_signed = models.DateTimeField(blank=True, null=True)
@@ -65,6 +79,13 @@ class Application(models.Model):
     def __str__(self):
         return self.exchange_participant.first_name + ' ' + self.exchange_participant.last_name
 
+    def send_application_survey(self):
+        if not self.timeline.state_application_survey_sent:
+
+            self.timeline.state_application_survey_sent = True
+            self.timeline.date_application_survey_sent = datetime.datetime.now()
+            self.timeline.save()
+
 
 class ApplicationFilter(django_filters.FilterSet):
     # name = django_filters.CharFilter(lookup_expr='iexact')
@@ -72,4 +93,4 @@ class ApplicationFilter(django_filters.FilterSet):
 
     class Meta:
         model = Application
-        fields = ['status',]
+        fields = ['status', ]
